@@ -2,7 +2,7 @@ $(function() {
     var Cat = function(name, path) {
         this.name = name;
         this.path = path;
-        this.vote = 0;
+        this.votes = 0;
     };
     Cat.prototype.vote = function() {
         ++this.vote
@@ -35,13 +35,13 @@ $(function() {
     var item2 = Math.floor(Math.random()*tracker.length);
 
     if (item === item2) {
-        item2 = Math.floor((item2 / 2) + 1);
+        item2 = Math.floor((item2 / 3) + 1);
     } ;
     console.log(item, item2);
     $('<img />', {id: 'leftCat', src: tracker[item].path}).appendTo($('#C1'));
     $('<img />', {id: 'rightCat', src: tracker[item2].path}).appendTo($('#C3'));
 
-    var pieData = [
+    var data = [
     {
         value: cat1.votes,
         color:"#A00012"
@@ -100,21 +100,23 @@ $(function() {
     }
 ];
 
-var pieOptions = {
+var options = {
     segmentShowStroke : false,
     animateScale : true
 }
 
 $('#leftClick').click(function(e) {
     e.preventDefault();
-    ++polarChart.segments[item].value;
+    polarChart.segments[item].value++;
+    polarChart.update();
 });
-$('#rightClick').click(function(e) {
-    e.preventDefault();
-    ++polarChart.segments[item2].value;
+$('#rightClick').click(function(f) {
+    f.preventDefault();
+    polarChart.segments[item2].value++;
+    polarChart.update();
 });
 
 var countries= document.getElementById("countries").getContext("2d");
-var polarChart = new Chart(countries).PolarArea(pieData, pieOptions);
+var polarChart = new Chart(countries).PolarArea(data, options);
 
 });
