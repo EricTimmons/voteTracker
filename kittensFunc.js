@@ -120,10 +120,12 @@ var pieOptions = {
 }
 
 $('#leftClick').click(function(e) {
-    ++polarChart.segments[item].value
+    e.preventDefault();
+    ++polarChart.segments[item].value;
 });
 $('#rightClick').click(function(e) {
-    ++polarChart.segments[item2].value
+    e.preventDefault();
+    ++polarChart.segments[item2].value;
 });
 
 var countries= document.getElementById("countries").getContext("2d");
