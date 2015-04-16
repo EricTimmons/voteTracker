@@ -102,7 +102,8 @@ $(function() {
 
 var options = {
     segmentShowStroke : false,
-    animateScale : true
+    animateScale : true,
+    scaleShowLabelBackdrop : false
 }
 
 $('#leftClick').click(function(e) {
