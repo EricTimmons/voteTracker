@@ -43,72 +43,58 @@ $(function() {
 
     var pieData = [
     {
-        // 1
         value: cat1.votes,
         color:"#A00012"
     },
     {
-        // 2
         value : cat2.votes,
         color : "#0A0064"
     },
     {
-        // 3
         value : cat3.votes,
         color : "#00A037"
     },
     {
-        // 4
         value : cat4.votes,
         color : "#004200"
     },
     {
-        // 5
         value : cat5.votes,
         color : "#0230A0"
     },
     {
-        // 6
         value : cat6.votes,
         color : "#09300A"
     },
     {
-        // 7
         value : cat7.votes,
         color : "#c00920"
     },
     {
-        // 8
         value : cat8.votes,
         color : "#00c078"
     },
     {
-        // 9
         value : cat9.votes,
         color : "#902c00"
     },
     {
-        // 10
         value : cat10.votes,
         color : "#0980c0"
     },
     {
-        // 11
         value : cat11.votes,
         color : "#0F900c"
     },
     {
-        // 12
         value : cat12.votes,
         color : "#f03900"
     },
     {
-        // 13
         value : cat13.votes,
         color : "#0fB700"
     },
     {
-        // 14
         value : cat14.votes,
         color : "#00f01A"
     }
