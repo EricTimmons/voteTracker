@@ -4,25 +4,23 @@ $(function() {
         this.path = path;
         this.votes = 0;
     };
-    Cat.prototype.vote = function() {
-        ++this.vote
-    };
+
     var tracker = [];
 
-    var cat1 = new Cat('Rocket', 'catPics/cat1.jpg'),
-        cat2 = new Cat('Cliff', 'catPics/cat2.jpg'),
-        cat3 = new Cat('Furb', 'catPics/cat3.jpg'),
-        cat4 = new Cat('Pawz', 'catPics/cat4.jpg'),
-        cat5 = new Cat('Tails', 'catPics/cat5.jpg'),
-        cat6 = new Cat('Jeff', 'catPics/cat6.jpg'),
-        cat7 = new Cat('Wonder Cat', 'catPics/cat7.jpg'),
-        cat8 = new Cat('Cracker Jack', 'catPics/cat8.jpg'),
-        cat9 = new Cat('Eraser', 'catPics/cat9.jpg'),
-        cat10 = new Cat('Table', 'catPics/cat10.jpg'),
-        cat11 = new Cat('Chair', 'catPics/cat11.jpg'),
-        cat12 = new Cat('Catango', 'catPics/cat12.jpg'),
-        cat13 = new Cat('Cat Man', 'catPics/cat13.jpg'),
-        cat14 = new Cat('Vince Mcman', 'catPics/cat14.jpg');
+    var cat1 = new Cat('Rocket', 'https://i.imgur.com/Fi5A1r9.jpg'),
+        cat2 = new Cat('Cliff', 'https://i.imgur.com/PUeYMyg.jpg'),
+        cat3 = new Cat('Furb', 'https://i.imgur.com/V0Fk1Im.jpg'),
+        cat4 = new Cat('Pawz', 'https://i.imgur.com/6pTGPW2.jpg'),
+        cat5 = new Cat('Tails', 'https://i.imgur.com/LkQ0U5U.jpg'),
+        cat6 = new Cat('Jeff', 'https://i.imgur.com/DAdbN7g.jpg'),
+        cat7 = new Cat('Wonder Cat', 'https://i.imgur.com/MmfkSEu.jpg'),
+        cat8 = new Cat('Cracker Jack', 'https://i.imgur.com/OTCNKAL.jpg'),
+        cat9 = new Cat('Eraser', 'https://i.imgur.com/RVLMqAY.jpg'),
+        cat10 = new Cat('Table', 'https://i.imgur.com/QK3DEAB.jpg'),
+        cat11 = new Cat('Chair', 'https://i.imgur.com/De7asdr.jpg'),
+        cat12 = new Cat('Catango', 'https://i.imgur.com/sBiXyQa.jpg'),
+        cat13 = new Cat('Cat Man', 'https://i.imgur.com/DS8UsDR.jpg'),
+        cat14 = new Cat('Vince Mcman', 'https://i.imgur.com/a9TLgI7.jpg');
 
     tracker.push(cat1,
         cat2, cat3, cat4,
@@ -34,10 +32,15 @@ $(function() {
     var item = Math.floor(Math.random()*tracker.length);
     var item2 = Math.floor(Math.random()*tracker.length);
 
+    var renderImages = function() {
+        item = Math.floor(Math.random()*tracker.length);
+        item2 = Math.floor(Math.random()*tracker.length);
+    };
+
     if (item === item2) {
         item2 = Math.floor((item2 / 3) + 1);
     } ;
-    console.log(item, item2);
+
     $('<img />', {id: 'leftCat', src: tracker[item].path}).appendTo($('#C1'));
     $('<img />', {id: 'rightCat', src: tracker[item2].path}).appendTo($('#C3'));
 
@@ -110,14 +113,36 @@ $('#leftClick').click(function(e) {
     e.preventDefault();
     polarChart.segments[item].value++;
     polarChart.update();
+    $('#leftCat').remove();
+    renderImages();
+    $('<img />', {id: 'leftCat', src: tracker[item].path}).appendTo($('#C1'));
 });
+
 $('#rightClick').click(function(f) {
     f.preventDefault();
     polarChart.segments[item2].value++;
     polarChart.update();
+    $( '#rightCat' ).remove();
+    renderImages();
+    $('<img />', {id: 'rightCat', src: tracker[item].path}).prependTo($('#C3'));
 });
 
 var countries= document.getElementById("countries").getContext("2d");
 var polarChart = new Chart(countries).PolarArea(data, options);
+console.log(item, item2);
+$.ajax({
+    url: 'https://api.imgur.com/3/album/PZOxN.json',
+    method: 'GET',
+    headers: {
+    'Authorization': 'Client-ID 9a68dea02984b9c'
+    }
+})
+.done(function(res) {
+    images = res.data.images
+    renderImages(images);
+})
+.fail(function(err) {
+    console.log(err);
+});
 
 });
