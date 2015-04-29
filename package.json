@@ -1,0 +1,22 @@
+{
+  "name": "voteTracker",
+  "version": "1.0.0",
+  "description": "Combat Catz",
+  "main": "kittensFunc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EricTimmons/voteTracker.git"
+  },
+  "author": "timmoeri000@yahoo.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EricTimmons/voteTracker/issues"
+  },
+  "homepage": "https://github.com/EricTimmons/voteTracker",
+  "dependencies": {
+    "express": "^4.12.3"
+  }
+}
