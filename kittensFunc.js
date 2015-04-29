@@ -35,11 +35,11 @@ $(function() {
     var renderImages = function() {
         item = Math.floor(Math.random()*tracker.length);
         item2 = Math.floor(Math.random()*tracker.length);
+        if (item === item2) {
+            item2 = Math.floor((item2 / 3) + 1);
+        } ;
     };
 
-    if (item === item2) {
-        item2 = Math.floor((item2 / 3) + 1);
-    } ;
 
     $('<img />', {id: 'leftCat', src: tracker[item].path}).appendTo($('#C1'));
     $('<img />', {id: 'rightCat', src: tracker[item2].path}).appendTo($('#C3'));
@@ -114,17 +114,21 @@ $(function() {
         polarChart.segments[item].value++;
         polarChart.update();
         $('#leftCat').remove();
+        $('#rightCat').remove();
         renderImages();
         $('<img />', {id: 'leftCat', src: tracker[item].path}).appendTo($('#C1'));
+        $('<img />', {id: 'rightCat', src: tracker[item2].path}).appendTo($('#C3'));
     });
 
-    $('#rightClick', '#leftClick').click(function(f) {
+    $('#rightClick').click(function(f) {
         f.preventDefault();
         polarChart.segments[item2].value++;
         polarChart.update();
-        $( '#rightCat' ).remove();
+        $('#rightCat').remove();
+        $('#leftCat').remove();
         renderImages();
-        $('<img />', {id: 'rightCat', src: tracker[item].path}).prependTo($('#C3'));
+        $('<img />', {id: 'rightCat', src: tracker[item2].path}).appendTo($('#C3'));
+        $('<img />', {id: 'leftCat', src: tracker[item].path}).appendTo($('#C1'));
     });
 
     var countries= document.getElementById("countries").getContext("2d");
@@ -141,7 +145,7 @@ $(function() {
         images = res.data.images
         renderImages(images);
     })
-    .fail(function(err) {
-        console.log(err);
+    .fail(function(error) {
+        console.log(error);
     });
 });
