@@ -1,0 +1,76 @@
+body {
+    background: #0C2026;
+    /*background: url(http://img1.wikia.nocookie.net/__cb20130127055956/degrassi/images/d/d8/Fire-animated-hot-burn.gif);*/
+}
+
+section {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+h1 {
+    padding-top: 40px;
+    background: #757767;
+    width: 1000px;
+    height: 80px;
+    text-align: center;
+    margin: 0 auto;
+    color: #FDB43E;
+}
+
+.container {
+    background: #B94341;
+    margin: 0 auto;
+    width: 1000px;
+    height: 900px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+#C1 {
+    background: orange;
+    font-weight: bold;
+    color: white;
+    width: 350px;
+    height: 350px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 180px;
+    border: 2px solid #F2622C;
+}
+
+#C3 {
+    background: orange;
+    font-weight: bold;
+    color: white;
+    width: 350px;
+    height: 350px;
+    margin: 10px;
+    text-align: center;
+    border-radius: 180px;
+    border: 2px solid #F2622C;
+
+}
+
+#C4 {
+    background: #FDB43E;
+    width: 400px;
+    height: 400px;
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 400px;
+    margin: 20px;
+    border-radius: 5px;
+}
+
+img {
+    border-radius: 180px;
+    width: 350px;
+    height: 350px;
+}
+
+/*design note: use Tears of a clownfish for color scheme*/
