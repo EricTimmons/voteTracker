@@ -11,7 +11,7 @@ app.get('/secret', function(request, response) {
 })
 
 app.get('/*', function(request, response) {
-  response.status(404).sendFile('~/Programming/seab-29/in_class/voteTracker/public/404.html')
+  response.status(404).sendFile('../public/404.html')
 });
 
 app.listen(app.get('port'), function() {
